@@ -6,3 +6,4 @@ scikit-learn
 hopsworks[python]
 dataframe_image
 python-dotenv
+jupyter

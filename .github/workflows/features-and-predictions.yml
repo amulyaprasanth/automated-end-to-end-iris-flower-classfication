@@ -1,0 +1,33 @@
+name: Iris Feature And Prediction Pipelines
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '00 00 * * *'
+
+jobs:
+    test_schedule:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo content
+              uses: actions/checkout@v4
+
+            - name: setup python
+              uses: actions/setup-python@v3
+              with:
+                python-version: '3.11.8'
+
+            - name: Install requirements
+              run: pip install -r requirements.txt
+
+            - name: execute python workflows from bash script
+              env:
+                HOPSWORKS_API_KEY: ${{secrets.HOPSWORKS_API_KEY}}
+              run: ./run-feature-and-prediction-pipelines.sh
+            
+            - name: publish github pages
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                commit_message: "Automated graph published"
+                
+                branch: main
+
