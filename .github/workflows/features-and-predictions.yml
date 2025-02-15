@@ -19,9 +19,6 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
-      - name: Set the ipykernel
-        run: python -m ipykernel install --user --name hopsworks-tutorial --display-name "Hopsworks Tutorial"
-
       - name: set executable permissions
         run: chmod +x ./run-feature-and-prediction-pipelines.sh
 
