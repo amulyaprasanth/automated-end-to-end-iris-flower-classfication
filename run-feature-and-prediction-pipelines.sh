@@ -4,7 +4,7 @@
 set -e
 
 # Change directory to the module containing the Jupyter notebooks
-cd src/01-module
+cd notebooks
 
 # Execute the feature pipeline notebook and convert it to a notebook format
 jupyter nbconvert --to notebook --execute iris-feature-pipeline.ipynb
